@@ -1,27 +1,47 @@
-# Example Mitosis project
+# Qwik Library ⚡️
 
-### Setup
+- [Qwik Docs](https://qwik.builder.io/)
+- [Discord](https://qwik.builder.io/chat)
+- [Qwik on GitHub](https://github.com/BuilderIO/qwik)
+- [@QwikDev](https://twitter.com/QwikDev)
+- [Vite](https://vitejs.dev/)
+- [Partytown](https://partytown.builder.io/)
+- [Mitosis](https://github.com/BuilderIO/mitosis)
+- [Builder.io](https://www.builder.io/)
 
-```bash
-# install
-yarn install
+---
 
-# build
-yarn run build
+## Project Structure
 
-# run dev server that watches for changes
-yarn run start
+Inside of you project, you'll see the following directories and files:
 
-# test
-yarn run test
+```
+├── public/
+│   └── ...
+└── src/
+    ├── components/
+    │   └── ...
+    └── index.ts
 ```
 
-### Project structure
+- `src/components`: Recommended directory for components.
 
-Here are some key things to look at:
+- `index.ts`: This is the entry point of your component library, make sure all the public components are exported from this file.
 
-- `src` contains your Mitosis source code
-- `output` contains per-target output of the project
-  - You will notice `.lite.tsx` files _in_ your output. Those are a human-readable Mitosis components. Think of them as a reference point for you to debug more easily, since the actual JS output is minified and thus difficult to read.
-- `mitosis.config.js` contains general and per-target configuration. It is used by `mitosis build`.
-- `overrides` contains a per-target folder that mimicks the structure of `src`, and will completely swap out any files with identical names. Example: since we have defined `overrides/react-native/src/functions/is-react-native.ts`, it will override `src/functions/is-react-native.ts` in `output/react-native/src/functions/is-react-native.js`
+## Development
+
+Development mode uses [Vite's development server](https://vitejs.dev/). For Qwik during development, the `dev` command will also server-side render (SSR) the output. The client-side development modules loaded by the browser.
+
+```
+pnpm dev
+```
+
+> Note: during dev mode, Vite will request many JS files, which does not represent a Qwik production build.
+
+## Production
+
+The production build should generate the production build of your component library in (./lib) and the typescript type definitions in (./lib-types).
+
+```
+pnpm build
+```
